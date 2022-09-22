@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TaskCreator({createNewTask}) {
+export const TaskCreator =({createNewTask}) => {
 //   console.log(props);
   const [newTaskName, setNewTaskName] = useState("");
 
@@ -18,10 +18,11 @@ function TaskCreator({createNewTask}) {
         placeholder="Enter a new task"
         value={newTaskName}
         onChange={(e) => setNewTaskName(e.target.value)}
+        autoFocus
+        onFocus={e=>e.currentTarget.select()}
       />
       <button>Save Task</button>
     </form>
   );
 }
 
-export default TaskCreator;
