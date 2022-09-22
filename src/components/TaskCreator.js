@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export const TaskCreator =({createNewTask}) => {
-//   console.log(props);
+export const TaskCreator = ({ createNewTask }) => {
+  //   console.log(props);
   const [newTaskName, setNewTaskName] = useState("");
-
+  const inputNt = useRef(null)
+  useEffect(() => {
+  inputNt.current.focus()
+  }, [])
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     createNewTask(newTaskName);
@@ -11,23 +15,31 @@ export const TaskCreator =({createNewTask}) => {
     setNewTaskName("");
   };
 
+
+const FocusDemo = () => {
+
+  inputNt.current.focus()
+  
+  
+}
+
   return (
     <form onSubmit={handleSubmit} className="my-2 row">
       <div className="col-9">
-      <input
-        type="text"
-        placeholder="Enter a new task"
-        value={newTaskName}
-        onChange={(e) => setNewTaskName(e.target.value)}
-        autoFocus
-        onFocus={e=>e.currentTarget.select()}
-        className="form-control"
-      />
+        <input
+          id="inputNt"
+          type="text"
+          placeholder="Enter a new task"
+          value={newTaskName}
+          onChange={(e) => setNewTaskName(e.target.value)}
+          ref={inputNt}
+          className="form-control"
+        />
       </div>
       <div className="col-3">
-      <button className="btn btn-primary btn-sm">Save Task</button>
+        <button onClick={FocusDemo} className="btn btn-primary btn-sm">Save Task</button>
+      
       </div>
     </form>
   );
-}
-
+};
