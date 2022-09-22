@@ -12,7 +12,8 @@ export const TaskCreator =({createNewTask}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="my-2 row">
+      <div className="col-9">
       <input
         type="text"
         placeholder="Enter a new task"
@@ -20,8 +21,12 @@ export const TaskCreator =({createNewTask}) => {
         onChange={(e) => setNewTaskName(e.target.value)}
         autoFocus
         onFocus={e=>e.currentTarget.select()}
+        className="form-control"
       />
-      <button>Save Task</button>
+      </div>
+      <div className="col-3">
+      <button className="btn btn-primary btn-sm">Save Task</button>
+      </div>
     </form>
   );
 }

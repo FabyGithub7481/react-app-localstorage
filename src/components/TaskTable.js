@@ -3,20 +3,20 @@ import { TaskRow } from "./TaskRow";
 
 export const TaskTable = ({ tasks, toggleTask, showCompleted = false }) => {
   const taskTableRows = (doneValue) => {
-
-
-    return tasks.filter(t=> t.done===doneValue).map((taskItem) => (
-      <TaskRow
-        taskItemTr={taskItem}
-        key={taskItem.name}
-        toggleTask={toggleTask}
-      />
-    ));
+    return tasks
+      .filter((t) => t.done === doneValue)
+      .map((taskItem) => (
+        <TaskRow
+          taskItemTr={taskItem}
+          key={taskItem.name}
+          toggleTask={toggleTask}
+        />
+      ));
   };
   return (
-    <table>
+    <table className="table table-dark table-striped table-bordered border-secondary">
       <thead>
-        <tr>
+        <tr className="table-primary">
           <th>Task</th>
         </tr>
       </thead>
